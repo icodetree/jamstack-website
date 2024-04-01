@@ -7,6 +7,7 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -37,6 +38,17 @@ module.exports = {
         // theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: `3p9ylh2a`, // 여기에 Sanity 프로젝트 ID를 입력
+        dataset: `production`, // 여기에 사용할 데이터셋 이름을 입력
+        // 다음은 선택적 설정입니다:
+        token: process.env.SANITY_ACCESS_TOKEN, // 환경 변수에서 토큰을 불러옴
+        watchMode: true, // 개발 중에 실시간 업데이트를 위해 true로 설정할 수 있습니다.
+        overlayDrafts: true, // 초안을 실시간으로 보려면 true로 설정합니다(인증 토큰 필요).
       },
     },
   ],
